@@ -8,5 +8,6 @@ namespace Moving_Sticks_Ants
 {
     class Ant
     {
+        private int direction;
     }
 }
