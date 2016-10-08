@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Moving_Sticks_Ants"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="1001">
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard Name="storyboard">
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid>
-        
+
+        <Canvas Margin="10" Name="ell">
+            <Label Canvas.Top="70">MIN</Label>
+            <Label Canvas.Top="70" Canvas.Left="40" Name="MinTime"></Label>
+            <Label Canvas.Top="170">MAX</Label>
+            <Label Canvas.Top="170" Canvas.Left="40" Name="MaxTime"></Label>
+            <Line StrokeThickness="2" Name="Stick1" Stroke="Black" X1="10" Y1="72" X2="950" Y2="72" HorizontalAlignment="Left" VerticalAlignment="Center"></Line>
+            <Line StrokeThickness="2" Name="Stick2" Stroke="Black" X1="10" Y1="172" X2="950" Y2="172" HorizontalAlignment="Left" VerticalAlignment="Center"></Line>
+            <Button Canvas.Left="850" Canvas.Top="250" FontSize="20" Click="Button_Click" Background="{x:Null}" BorderBrush="#FF237E93" >START</Button>
+        </Canvas>
     </Grid>
 </Window>
