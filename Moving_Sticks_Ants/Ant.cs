@@ -99,7 +99,8 @@ namespace Moving_Sticks_Ants
             if (targetAnt == ant.Length||targetAnt==-1) return Double.MaxValue;
             double relativeDistance = position - ant[targetAnt].position;
             double relativeSpeed = speed - ant[targetAnt].speed;
-            if (relativeSpeed * relativeDistance >= 0) return Double.MaxValue;
+            if (relativeSpeed == 0) return Double.MaxValue;
+            if (relativeSpeed * relativeDistance > 0) return Double.MaxValue;
             else return -1*relativeDistance / relativeSpeed;
         }
 

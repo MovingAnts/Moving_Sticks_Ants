@@ -159,6 +159,7 @@ namespace Moving_Sticks_Ants
                     minus = minus_time[i];
                 }
             }
+
             /*计算每一只蚂蚁无障碍时结束爬行发生时间，与最短碰撞时间比对得出最短时间*/
             for (int i = 0; i < antNum; i++)
             {
@@ -168,6 +169,7 @@ namespace Moving_Sticks_Ants
                     minus = minus_end_time[i];
                 }
             }
+
             /*获取发生碰撞的蚂蚁*/
             for (int i = 0; i < antNum; i++)
             {
@@ -176,24 +178,31 @@ namespace Moving_Sticks_Ants
                     crash_ant.Enqueue(i);
                 }
             }
+
             /*每一只蚂蚁按照最短时间爬行，并将出界蚂蚁速度更新为0*/
             for (int i = 0; i < antNum; i++)
             {
                 position[i] = Ant[i].creep(minus);
-                if (Math.Abs(position[i])<0.001)
+                if (Math.Abs(position[i])<0.0001)
                 {
                     ant[i].Speed = 0;
+                    ant[i].Position = 0;
                 }
-                else if(Math.Abs(position[i]- stickLength)<0.001)
+                else if(Math.Abs(position[i]- stickLength)<0.0001)
                 {
                     ant[i].Speed = 0;
+                    ant[i].Position = stickLength;
                 }
             }
+
             /*将碰撞蚂蚁方向反向*/
             while (crash_ant.Count != 0)
             {
                 int i = crash_ant.Dequeue();
-                ant[i].changeDirection();
+                if (ant[i].Speed != 0)
+                {
+                    ant[i].changeDirection();
+                }
             }
             /*记录该次步骤*/
             Result.Enqueue(position);
